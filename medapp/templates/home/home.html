@@ -3,6 +3,13 @@
 
 
 {% block content %}
+
+    <style>
+    .owl-carousel .owl-stage, .owl-carousel.owl-drag .owl-item{
+    -ms-touch-action: auto;
+        touch-action: auto;
+}
+    </style>
     <section class="home-slider owl-carousel">
 {#      <div class="slider-item" style="background-image: url('{% static 'images/slider-2.jpg' %}');">#}
 {##}
@@ -87,7 +94,7 @@ We demystify medical jargons, helping patients to understand their medical histo
 {#            <p class="mb-0 lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi unde impedit, necessitatibus, soluta sit quam minima expedita atque corrupti reiciendis.</p>#}
           </div>
         </div>
-        <div class="row element-animate">
+        <div class="m-5 row element-animate">
           <div class="major-caousel js-carousel-1 owl-carousel">
             <div>
               <div class="media d-block media-custom text-center">
