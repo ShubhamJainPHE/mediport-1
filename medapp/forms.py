@@ -6,6 +6,11 @@ class Contact(forms.ModelForm):
         model = contact
         fields = ['fname', 'lname', 'email', 'message']
 
+class Diabetesreport(forms.ModelForm):
+    class Meta:
+        model = diabreport
+        fields = ['report']
+
 class Diabetes(forms.ModelForm):
     class Meta:
         model = diabetes

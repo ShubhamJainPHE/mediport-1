@@ -6,7 +6,9 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 import request
 from django.shortcuts import get_object_or_404
-
+import tabula
+import pandas as pd
+import os
 # Create your views here.
 
 
@@ -17,73 +19,28 @@ def diabetes_report(request):
 
     return render(request, 'Diabetes/Report.html',)
 
+def blood_report(request):
+
+    return render(request, 'Blood Profile/Report.html',)
+
+def bloodprofile(request):
+
+    return render(request, 'Blood Profile/bloodprofile.html',)
+
 def diabriskpred(request):
-
     if request.method == 'POST':
-        form = Diabetes(request.POST)
-
+        form = Diabetesreport(request.POST, request.FILES)
         if form.is_valid():
-            name = form.cleaned_data['name']
-            gender = form.cleaned_data['gender']
-            age = form.cleaned_data['age']
-            total_cholestrol = form.cleaned_data['total_cholestrol']
-            hdl_cholestrol = form.cleaned_data['hdl_cholestrol']
-            weight =  form.cleaned_data['weight']
-            height =  form.cleaned_data['height']
-            waist =  form.cleaned_data['waist']
-            hip =  form.cleaned_data['hip']
-            physically_active =  form.cleaned_data['physically_active']
-            eat = form.cleaned_data['eat']
-            bp = form.cleaned_data['bp']
-            relative_diabetes = form.cleaned_data['relative_diabetes']
-            parent_diabetes = form.cleaned_data['parent_diabetes']
-            glucose = form.cleaned_data['glucose']
-            smoking = form.cleaned_data['smoking']
-            heart_disease = form.cleaned_data['heart_disease']
-            depression = form.cleaned_data['depression']
-            HbA1c = form.cleaned_data['HbA1c']
-            haem = form.cleaned_data['haem']
-            context = diabetes.objects.create(name =name,
-                                              gender=gender,
-                                              age=age,
-                                              total_cholestrol=total_cholestrol,
-                                              hdl_cholestrol=hdl_cholestrol,
-                                              weight=weight,
-                                              height=height,
-                                              waist=waist,
-                                              hip=hip,
-                                              physically_active=physically_active,
-                                              eat=eat,
-                                              bp=bp,
-                                              relative_diabetes=relative_diabetes,
-                                              parent_diabetes=parent_diabetes,
-                                              glucose=glucose,
-                                              smoking=smoking,
-                                              heart_disease=heart_disease,
-                                              depression=depression,
-                                              HbA1c=HbA1c,
-                                              haem=haem)
-
-            context.save()
-            g = (weight*10000) / (height * height)
-            bmi_calc = float("{0:.2f}".format(g))
-            bmi_chart = (bmi_calc/24.9)*10
-            print(bmi_chart)
-            # while gender == 'Male':
-            #     if total_cholestrol > 30 & total_cholestrol <65:
-            #         cholestrol_chart =
-
-            dic = {'name':name,'age':age, 'gender':gender, 'total_cholestrol':total_cholestrol,'hdl_cholestrol':hdl_cholestrol,
-                   'weight':weight,'height':height,'waist':waist,'hip':hip,'physically_active':physically_active,'eat':eat,
-                   'parent_diabetes':parent_diabetes,'relative_diabetes':relative_diabetes, 'bp':bp, 'glucose':glucose,
-                   'smoking':smoking,'heart_disease':heart_disease,'depression':depression,'HbA1c':HbA1c,'haem':haem,
-                   'bmi_calc':bmi_calc,'bmi_chart':bmi_chart,
-                   }
-
-            return render_to_response('Diabetes/Report.html', dic)
+            report = request.FILES.get('report')
+            df = tabula.read_pdf(report, pages='all')
+            print(df[df['TEST NAME'].str.contains(r'TOTAL CHOLESTEROL(?!$)')])
+            # context.save()
         else:
-            form = Diabetes()
-
+            print('hoooo')
+            form.save()
+            return render(request, 'Diabetes/diabriskpred.html', {'message':'Some error occurred. Please try again. '})
+    else:
+        Diabetesreport()
     return render(request, 'Diabetes/diabriskpred.html')
 
 def contact(request):
@@ -97,3 +54,4 @@ def contact(request):
             message = form.cleaned_data['message']
             form.save()
     return render(request, 'contact/contact.html', {'Title':'Contact Us'},{'':'','message':"Your form was submitted successfully!"})
+

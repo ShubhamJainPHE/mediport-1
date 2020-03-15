@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+
 gender_choices = [
         (None,'Gender'),
         ('Male', 'Male'),
@@ -49,3 +50,6 @@ class diabetes(models.Model):
     depression = models.CharField(max_length=100, choices=choices, null=True)
     HbA1c = models.IntegerField(null=True, blank=True)
     haem = models.IntegerField(null=True, blank=True)
+
+class diabreport(models.Model):
+    report = models.FileField(upload_to='diabreport/%Y/%m/%d/', null=True)

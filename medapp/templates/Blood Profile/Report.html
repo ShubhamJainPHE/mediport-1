@@ -1,0 +1,874 @@
+{% load staticfiles %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <title>MedStartuo Report</title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!-- CSS Files -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #ffff;
+        }
+        @media print {
+body {-webkit-print-color-adjust: exact;}
+}
+
+        .section {
+            padding: 10px 0 !important;
+        }
+
+        .heading {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .border-bottom-main {
+            border-bottom: 4px solid #0e5563 !important;
+        }
+        @media print {
+    .border-bottom-main {
+            border-bottom: 4px solid #0e5563 !important;
+        -webkit-print-color-adjust: exact;
+    }
+}
+        .border-bottom-secondery {
+            border-bottom: 2px solid #ffc40c !important;
+        }
+        @media print {
+    .border-bottom-secondery {
+         border-bottom: 2px solid #ffc40c !important;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+@media print {
+    .vendorListHeading th {
+        color: white !important;
+    }
+}
+        .personal-info h5 {
+            margin-bottom: 0;
+        }
+
+        .col,
+        .col-1,
+        .col-2,
+        .col-3,
+        .col-4,
+        .col-5,
+        .col-6,
+        .col-7,
+        .col-8,
+        .col-9,
+        .col-10,
+        .col-11,
+        .col-12,
+        .col-auto,
+        .col-lg,
+        .col-lg-1,
+        .col-lg-2,
+        .col-lg-3,
+        .col-lg-4,
+        .col-lg-5,
+        .col-lg-6,
+        .col-lg-7,
+        .col-lg-8,
+        .col-lg-9,
+        .col-lg-10,
+        .col-lg-11,
+        .col-lg-12,
+        .col-lg-auto,
+        .col-md,
+        .col-md-1,
+        .col-md-2,
+        .col-md-3,
+        .col-md-4,
+        .col-md-5,
+        .col-md-6,
+        .col-md-7,
+        .col-md-8,
+        .col-md-9,
+        .col-md-10,
+        .col-md-11,
+        .col-md-12,
+        .col-md-auto,
+        .col-sm,
+        .col-sm-1,
+        .col-sm-2,
+        .col-sm-3,
+        .col-sm-4,
+        .col-sm-5,
+        .col-sm-6,
+        .col-sm-7,
+        .col-sm-8,
+        .col-sm-9,
+        .col-sm-10,
+        .col-sm-11,
+        .col-sm-12,
+        .col-sm-auto,
+        .col-xl,
+        .col-xl-1,
+        .col-xl-2,
+        .col-xl-3,
+        .col-xl-4,
+        .col-xl-5,
+        .col-xl-6,
+        .col-xl-7,
+        .col-xl-8,
+        .col-xl-9,
+        .col-xl-10,
+        .col-xl-11,
+        .col-xl-12,
+        .col-xl-auto {
+            padding-right: 5px !important;
+            padding-left: 5px !important;
+        }
+
+        .personal-info-title {
+            background-color: #ffc40c;
+            padding: 5px;
+        }
+                @media print {
+    .personal-info-title {
+         background-color: #ffc40c;
+            padding: 5px;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+        .personal-info .col-md-6 {
+            padding-right: 15px !important;
+            padding-left: 15px !important;
+        }
+
+        .personal-info-response {
+            background-color: #f1f1f1;
+            padding: 5px;
+        }
+
+        .test-info h5 {
+            margin-bottom: 0;
+        }
+
+        .test-heading-title {
+            color: #ffff !important;
+            background-color: #0e5563;
+            padding: 5px;
+        }
+
+          @media print {
+    .test-heading-title {
+            color: #ffff !important;
+            background-color: #0e5563;
+            padding: 5px;
+            -webkit-print-color-adjust: exact;
+    }
+}
+        .test-heading-response {
+            background-color: #f1f1f1;
+            padding: 5px;
+        }
+
+        .progress {
+            overflow: visible;
+            margin-bottom: 26px;
+            height: 4px;
+        }
+
+        .progress .progress-bar {
+            background-color: #000;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .progress .progress-bar span {
+            background-color: #000;
+            position: absolute;
+            bottom: -20px;
+            font-size: 10px;
+            line-height: 10px;
+            padding: 2px 3px 2px 4px;
+            right: -1.4em;
+            border-radius: 2px;
+        }
+
+        .progress .progress-bar span:after {
+            bottom: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(255, 255, 255, 0);
+            border-bottom-color: #000;
+            border-width: 5px;
+            margin-left: -5px;
+        }
+        .row{
+            margin-left: -10px!important;
+            margin-right: -10px!important;
+        }
+        @media (min-width: 1200px){
+.container {
+    max-width: 900px;
+
+}
+        }
+       .container{
+                 border: 3px solid #0e5563;
+            }
+.border-primary {
+    border-color: #ffc40c!important;
+}
+        .progres {
+  width: 150px;
+  height: 150px;
+  background: none;
+  position: relative;
+}
+
+.progres::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progres>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progres .progres-left {
+  left: 0;
+}
+
+.progres .progres-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 6px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progres .progres-left .progres-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progres .progres-right {
+  right: 0;
+}
+
+.progres .progres-right .progres-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progres .progres-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+        .rounded-lg {
+  border-radius: 1rem;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+div.h4 {
+  line-height: 1rem;
+}
+    </style>
+</head>
+
+<body class="">
+    <div class="main">
+        <div class="section section-basic">
+            <div class="container">
+                <div class="heading border-bottom-main">
+                    <div class="logo">
+                        <h3 class="title">
+                            Complete Blood Profile
+                        </h3>
+                    </div>
+                    <div class="report-name">
+                        <h4 class="title">
+                            MEDICAL REPORT
+                        </h4>
+                    </div>
+                </div>
+                <div class="personal-info py-3">
+                    <div class="heading border-bottom-secondery">
+                        <h5 class="m-0" style="font-weight: bold;color: #0e5563">
+                            PERSONAL INFORMATION
+                        </h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5 class="personal-info-title">
+                                        Name
+                                    </h5>
+                                </div>
+                                <div class="col-md-8">
+                                    <h5 class="personal-info-response">
+                                        {{name}}
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5 class="personal-info-title">
+                                        Age
+                                    </h5>
+                                </div>
+                                <div class="col-md-8">
+                                    <h5 class="personal-info-response">
+                                        {{age}}
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5 class="personal-info-title">
+                                        Gender
+                                    </h5>
+                                </div>
+                                <div class="col-md-8">
+                                    <h5 class="personal-info-response">
+                                        {{gender}}
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5 class="personal-info-title">
+                                        Height
+                                    </h5>
+                                </div>
+                                <div class="col-md-8">
+                                    <h5 class="personal-info-response">
+                                        {{height}}
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5 class="personal-info-title">
+                                        Nationality
+                                    </h5>
+                                </div>
+                                <div class="col-md-8">
+                                    <h5 class="personal-info-response">
+                                        Indian
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5 class="personal-info-title">
+                                        Weight
+                                    </h5>
+                                </div>
+                                <div class="col-md-8">
+                                    <h5 class="personal-info-response">
+                                        {{weight}}
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="test-info">
+                    <div class="heading border-bottom-secondery">
+                        <h5 class="m-0"style="font-weight: bold;color: #0e5563">
+                            TESTS
+                        </h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="test-heading-title">
+                                Test Name
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-title text-center">
+                                Result
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-title text-center">
+                                Bio Ref Interval
+                            </h5>
+                        </div>
+                        <!----------1--------------------------->
+                        <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                <B>Haemoglobin</B>
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                16.3 g/dL
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                13.0-17.0
+                            </h5>
+                        </div>
+                      <!----------2--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                <b>RBC</b>
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                5.47 mili/cu.mm
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                               4.5-5.5
+                            </h5>
+                        </div>
+                         <!----------3--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                <b>Total Leucocyte Count</b>
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                5.3*10^3/µL
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4-10*10^3
+                            </h5>
+                        </div>
+                         <!----------4--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                               <b> Platelets Count</b>
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                232*10^3/µL
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                150-410*10^3
+                            </h5>
+                        </div>
+                         <!----------5--------------------------->
+                         <div class="col-md-12">
+                            <h5 class="test-heading-response">
+                                <b>RBC</b>
+                            </h5>
+                        </div>
+                         <!----------6--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                <b>PCV</b>
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                37.1%
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                40-54
+                            </h5>
+                        </div>
+                         <!----------7--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                MCV
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                        <!----------8--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                MCH
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                         <!----------9--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                MCHC
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                         <!----------10--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                RDW-SD
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                         <!----------11--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                RDW-CV
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                         <!----------12--------------------------->
+                         <div class="col-md-12">
+                            <h5 class="test-heading-response">
+                                <b>Total Leucocyte Count</b>
+                            </h5>
+                        </div>
+
+                         <!----------13--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                Neutrophils
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                         <!----------14--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                Lymphocytes
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                         <!----------15--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                Monocytes
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                         <!----------13--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                Neutrophils
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                         <!----------16--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                Eosinophils
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                         <!----------17--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                Basophils
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                        <!----------18--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                MPV
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                         <!----------18--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                PDW
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+                         <!----------18--------------------------->
+                         <div class="col-md-6">
+                            <h5 class="test-heading-response">
+                                Immature Granulocyte Count
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                15.1
+                            </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="test-heading-response text-center">
+                                4 - 6
+                            </h5>
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+                <div class="lifestyle-info">
+                    <div class="heading border-bottom-secondery">
+                        <h5 class="m-0"style="font-weight: bold;color: #0e5563">
+                            LIFESTYLE SUGGESTIONS/NOTE TO THE PATIENT:
+                        </h5>
+                    </div>
+                    <div>
+{#                        <p>#}
+{#                            <span style="#}
+{#                            font-weight: bold;#}
+{#                        ">#}
+{#                                [For Prediabetes]#}
+{#                            </span>Rather than viewing prediabetes as a stepping stone to diabetes, it may be#}
+{#                            helpful to see it as#}
+{#                            a motivator for making changes that can help reduce your risk.#}
+{#                            Eating the right foods and adopting other lifestyle behaviours promotes healthy blood sugar#}
+{#                            and insulin levels#}
+{#                            can give the best chance at avoiding diabetes.#}
+{#                        </p>#}
+                        <ol>
+                            <li>
+                               Decrease level in PCV can be due to ingestion of a large amount of water, or in Pregnancy. It is also a symptom for
+                               all types of Anaemia.
+                            </li>
+                            <li>
+                                Eating foods rich in Iron, Folic acid, Vitamin B-12, Copper, Vitamin A can help improving PCV level.
+                            </li>
+                            <li>
+                               Including dark, leafy, green vegetables, red meat, dairy products, sweet potato, beans, carrot, fruits, such as
+                               watermelon, grapefruit, and cantaloupe in daily diet can help in normalising the level
+                            </li>
+
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+    <!--   Core JS Files   -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+    <script src="{% static 'js/popper.mins.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/bootstrap-material-design.min.js' %}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="{% static 'js/mains.js' %}" type="text/javascript"></script>
+</body>
+
+</html>
+    <script>
+    $(function() {
+
+  $(".progres").each(function() {
+
+    var value = $(this).attr('data-value');
+    var left = $(this).find('.progres-left .progres-bar');
+    var right = $(this).find('.progres-right .progres-bar');
+
+    if (value > 0) {
+      if (value <= 50) {
+        right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+      } else {
+        right.css('transform', 'rotate(180deg)')
+        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+      }
+    }
+
+  })
+
+  function percentageToDegrees(percentage) {
+
+    return percentage / 100 * 360
+
+  }
+
+});
+    </script>
+{% endblock %}
