@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 import tabula
 import pandas as pd
 import os
+import numpy as np
 # Create your views here.
 
 
@@ -33,7 +34,24 @@ def diabriskpred(request):
         if form.is_valid():
             report = request.FILES.get('report')
             df = tabula.read_pdf(report, pages='all')
-            print(df[df['TEST NAME'].str.contains(r'TOTAL CHOLESTEROL(?!$)')])
+            list_values = []
+            for n in range(len(df)):
+                page = df[n]
+                for name in page.columns.values:
+                    c = page[page[name].astype(str).str.contains(r'(?i)total cholesterol ', na=False, regex=True)]
+                    d = page[page[name].astype(str).str.contains('HEMOGLOBIN', na=False, regex=True)]
+                    value1 = c['VALUE'].values
+                    value2 = d['VALUE'].values
+                    for i in value1:
+                        list_values.append(i)
+                    for i in value2:
+                        list_values.append(i)
+            cholesterol = list_values[0]
+            hemoglobin = list_values[1]
+            dic = {'cholesterol':cholesterol,'hemoglobin':hemoglobin }
+            print(list_values)
+            return render(request, 'Diabetes/Report.html',dic)
+            # print(df[df['TEST NAME'].str.contains(r'TOTAL CHOLESTEROL(?!$)')])
             # context.save()
         else:
             print('hoooo')

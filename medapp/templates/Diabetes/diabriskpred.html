@@ -86,6 +86,152 @@
   background-color: #007bff;
   border-color: #007bff;
 }
+.overlay {
+  display: none;
+}
+.success {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+.success .modal {
+  border-radius: 6px;
+  background: white;
+  width: 540px;
+  {#height: 300px;#}
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 20px;
+  animation: scaleUp 0.5s ease 0s;
+}
+.success .modal::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -40px;
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  background: url(https://s11.postimg.org/8wu2dzu37/sucesso_check.png) no-repeat center center;
+  background-size: contain;
+  transform: scale(0);
+  animation: scaleUp 0.5s ease 0.5s forwards;
+}
+.success .modal h1 {
+  font-size: 3.6em;
+  color: purple;
+  text-align: center;
+  margin: 1em 0 0.5em 0;
+  animation: scaleUp 0.5s ease 0.8s forwards;
+  transform: scale(0);
+}
+.success .modal p {
+  font-size: 1.6em;
+  color: #1e1e1e;
+    position: relative;
+  margin: 0.5em 0;
+  line-height: 1.5;
+  text-align: center;
+  animation: opacity 0.5s ease 1.5s forwards;
+}
+.success .modal .cta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2em;
+  animation: opacity 1s ease 2s forwards;
+}
+.success .modal .cta a {
+  width: 50%;
+  height: 60px;
+  text-align: center;
+  padding: 20px;
+  font-size: 2em;
+  color: white;
+  margin: 0px 5px;
+  text-decoration: none;
+}
+.success .modal .cta .backward {
+  background: #1e1e1e;
+}
+.success .modal .cta .forward {
+  background: #4285F4;
+  animation: pop 0.5s ease 4.5s forwards;
+}
+:root {
+    /* CSS variables to change the configuration of tick and circle */
+    --circle-width: 150px;
+    --circle-height: 150px;
+    --tick-width: calc(var(--circle-width)*0.56);
+    --tick-height: calc(var(--circle-height)*0.24);
+    --tick-thickness: calc(var(--tick-width)*0.1);
+    --background-color: #4285F4;    /* Royal Blue */
+    --circle-color: #4285F4;           /* White */
+    --tick-first-color: #0F9D58;    /* Shamrock Green */
+    --tick-second-color: #F4B400;   /* Selective Yellow */
+    --tick-third-color: #DB4437;    /* Cinnabar */
+    --tick-final-color: white;    /* Royal Blue */
+}
+
+.circle {
+    background-color: var(--circle-color);
+    width: var(--circle-width);
+    height: var(--circle-height);
+    left: calc(50% - var(--circle-width) / 2);
+    {#top: calc(50% - var(--circle-height) / 2);#}
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    border: var(--tick-thickness) solid var(--circle-border-color);
+}
+
+.tick {
+    display: inline-block;
+    width: 56%;
+    height: 24%;
+    border-left: var(--tick-thickness) solid var(--tick-final-color);
+    border-bottom: var(--tick-thickness) solid var(--tick-final-color);
+    position: absolute;
+    margin: 0 auto;
+    left: calc(var(--circle-width)*0.19);
+    top: calc(var(--circle-height)/1.9 - var(--tick-height));
+    transform: rotate(-40deg);
+    transform-origin: calc(var(--tick-width)*0.57) calc(var(--tick-height)/2);
+    animation: tick-animation 1s;
+}
+
+@keyframes tick-animation {
+    0% {
+        height: 0;
+        width: 0;
+        border-left-color: var(--tick-first-color);
+    }
+    50% {
+        width: 0;
+        height: var(--tick-height);
+        border-left-color: var(--tick-second-color);
+        border-bottom-color: var(--tick-first-color);
+    }
+    75% {
+        border-left-color: var(--tick-third-color);
+        border-bottom-color: var(--tick-second-color);
+    }
+    90% {
+        border-bottom-color: var(--tick-third-color);
+    }
+    100% {
+        width: var(--tick-width);
+        border-color: var(--tick-final-color);
+    }
+}
 
     </style>
     <section class="home-slider owl-carousel">
@@ -109,29 +255,27 @@
         <br>  <br>  <br>  <br>
      <center>
             <div class="container">
-  <form class="form" method="post" enctype="multipart/form-data">
+
+
+  <form id="diabetesform" class="form" method="post" enctype="multipart/form-data">
       {% csrf_token %}
-
-
-
       <div class="form-group">
     <input type="file" name="report" class="file">
     <div class="input-group col-xs-12">
       <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-      <input type="text" class="form-control input-lg" disabled placeholder="Upload Report (.pdf)">
+      <input id="diabetesreport" type="text" class="form-control input-lg" disabled placeholder="Upload Report (.pdf)">
       <span class="input-group-btn">
         <button class="browse btn btn-primary input-lg" type="button"> Browse</button>
       </span>
     </div>
   </div>
 
-
-
       <br>
        <div class="p-3 mb-4">
 
           <div class="text-center">
-            <button style="width: 15%"  type="submit" class="btn btn-primary">Submit</button>
+            <input id="submit" style="width: 15%" type="submit" class="btn btn-primary">
+
           </div>
        </div>
   </form>
@@ -139,7 +283,26 @@
      </center>
     </div>
     </section>
+{#<div id="downloadbutton" style="display: none">#}
+{#                <button id="download" style="width: 15%;"  class="btn btn-primary">Download Report</button>#}
+{#            </div>#}
+    <!----------------------------------------------SUCCESS MODAL----------------------------------------------------------->
 
+
+{#<div id="success">#}
+{#<div class="overlay">#}
+{#    <div class="modal">#}
+{#        <div class="circle">#}
+{#  <div class="tick"></div>#}
+{#</div>#}
+{#        <p>Successfully Submitted</p>#}
+{#        <div class="cta"><a class="backward" href="#">Go back</a><a class="forward" href="#">Do something</a></div>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#</div>#}
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
 $(document).on('click', '.browse', function(){
   var file = $(this).parent().parent().parent().find('.file');
@@ -149,4 +312,30 @@ $(document).on('change', '.file', function(){
   $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
 });
     </script>
+
+{#    <script>#}
+{#         $(document).on('submit', '#diabetesform',function(e){#}
+            {#alert("Form submitted");#}
+{#            e.preventDefault();#}
+{#            $(".overlay").addClass("success");#}
+{#            $(".backward").on('click', function () {#}
+{#                $(".overlay").removeClass("success");#}
+{#            });#}
+{#            document.getElementById("downloadbutton").style.display = 'block';#}
+{#            document.getElementById("success").style.display = 'block';#}
+{#            document.getElementById("submit").style.display = 'none';#}
+{#        $.ajax({#}
+{#        type:'POST',#}
+{#        url:'{% url "diabetes_report" %}',#}
+{#        data:{#}
+{#            file:$('#diabetesreport').val(),#}
+{#            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),#}
+{#            action: 'post'#}
+{#        },#}
+{#    });#}
+{##}
+{##}
+{#    })#}
+{#    </script>#}
+
 {% endblock %}
