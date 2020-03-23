@@ -7,6 +7,7 @@ from django.contrib import messages
 import request
 from django.shortcuts import get_object_or_404
 import tabula
+from tabula import read_pdf
 import pandas as pd
 import os
 import numpy as np
@@ -34,7 +35,8 @@ def diabriskpred(request):
         if form.is_valid():
             report = request.FILES.get('report')
             df = tabula.read_pdf(report, pages='all')
-            list_values = []
+            value_cholesterol = []
+            value_hemoglobin = []
             for n in range(len(df)):
                 page = df[n]
                 for name in page.columns.values:
@@ -43,13 +45,12 @@ def diabriskpred(request):
                     value1 = c['VALUE'].values
                     value2 = d['VALUE'].values
                     for i in value1:
-                        list_values.append(i)
+                        value_cholesterol.append(i)
                     for i in value2:
-                        list_values.append(i)
-            cholesterol = list_values[0]
-            hemoglobin = list_values[1]
+                        value_hemoglobin.append(i)
+            cholesterol = value_cholesterol[0]
+            hemoglobin = value_hemoglobin[0]
             dic = {'cholesterol':cholesterol,'hemoglobin':hemoglobin }
-            print(list_values)
             return render(request, 'Diabetes/Report.html',dic)
             # print(df[df['TEST NAME'].str.contains(r'TOTAL CHOLESTEROL(?!$)')])
             # context.save()
