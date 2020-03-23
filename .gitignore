@@ -27,3 +27,4 @@ static/local/
 static/rev-manifest.json
 temp/
 migrations/
+mediport.log
