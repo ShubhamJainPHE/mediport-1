@@ -3,7 +3,9 @@
 
 
 {% block content %}
+    <style>
 
+    </style>
 
     <section class="home-slider owl-carousel">
 {#      <div class="slider-item" style="background-image: url('{% static 'images/slider-2.jpg' %}');">#}
@@ -19,12 +21,21 @@
 {##}
 {#      </div>#}
 
-      <div class="slider-item" style="background-image: url('{% static 'img/slider-1.jpg' %}');">
+      <div class="slider-item" style="background-image: url('{% static 'img/bakimg1.jpg' %}');">
         <div class="container">
           <div class="row slider-text align-items-center">
             <div class="col-md-7 col-sm-12 element-animate">
-              <h2>Personalize Health Reports with AI-Powered solutions</h2>
-              <p>MEDIPort next-generation healthcare solutions personalizes your health report and gives you insights with lifestyle suggestions in just one click.</p>
+              <h2 style="opacity: 1!important;">Personalize Health Reports with AI-Powered solutions</h2>
+              <p >MEDIPort next-generation healthcare solutions personalizes your health report and gives you insights with lifestyle suggestions in just one click.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+     <div class="slider-item" style="background-image: url('{% static 'img/bakimg2.jpg' %}');">
+        <div class="container">
+          <div class="row slider-text align-items-center">
+            <div class="col-md-7 col-sm-12 element-animate">
             </div>
           </div>
         </div>
@@ -55,13 +66,16 @@ We demystify medical jargons, helping patients to understand their medical histo
         </div>
         <div class="row element-animate">
 
-          <div class="major-caousel js-carousel-2 owl-carousel">
+          <div class="container">
+              <div class=" major-caousel js-carousel-2 owl-carousel">
          <div>
-              <div class="media d-block media-custom text-left">
+              <div class="media d-block media-custom">
 {#                <img src="{% static 'images/img_thumb_1.jpg' %}" alt="Image Placeholder" class="img-fluid">#}
-                <div class="media-body">
+               <a href="{% url 'diabriskpred' %}" class="text-black">
+                <div class="media-body" style="border: 1px solid gray">
 {#                  <span class="meta-post">December 2, 2017</span>#}
-                  <h3 class="mt-0 text-black"><a href="{% url 'diabriskpred' %}" class="text-black"><center>Diabetes Screening Test</center></a></h3>
+                    <br>
+                    <h3 class="mt-0 text-black"><center>Diabetes Screening Test</center></h3>
 {#                  <center><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></center>#}
                     <br>
 {#                  <p class="clearfix">#}
@@ -69,15 +83,18 @@ We demystify medical jargons, helping patients to understand their medical histo
 {#                    <a href="#" class="float-right meta-chat"><span class="ion-chatbubble"></span> 8</a>#}
 {#                  </p>#}
                 </div>
+                   </a>
               </div>
             </div>
 
-                       <div>
+              <div>
               <div class="media d-block media-custom text-left">
 {#                <img src="{% static 'images/img_thumb_1.jpg' %}" alt="Image Placeholder" class="img-fluid">#}
-                <div class="media-body">
+                <a href="{% url 'bloodprofile' %}" class="text-black">
+                  <div class="media-body" style="border: 1px solid gray">
 {#                  <span class="meta-post">December 2, 2017</span>#}
-                  <h3 class="mt-0 text-black"><a href="{% url 'bloodprofile' %}" class="text-black"><center>Complete Blood Profile</center></a></h3>
+                      <br>
+                  <h3 class="mt-0 text-black"><center>Complete Blood Profile</center></h3>
 {#                  <center><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></center>#}
                     <br>
 {#                  <p class="clearfix">#}
@@ -85,8 +102,67 @@ We demystify medical jargons, helping patients to understand their medical histo
 {#                    <a href="#" class="float-right meta-chat"><span class="ion-chatbubble"></span> 8</a>#}
 {#                  </p>#}
                 </div>
+                    </a>
               </div>
             </div>
+
+              <div>
+              <div class="media d-block media-custom text-left">
+{#                <img src="{% static 'images/img_thumb_1.jpg' %}" alt="Image Placeholder" class="img-fluid">#}
+                <a href="{% url 'bloodprofile' %}" class="text-black">
+                  <div class="media-body" style="border: 1px solid gray">
+{#                  <span class="meta-post">December 2, 2017</span>#}
+                      <br>
+                  <h3 class="mt-0 text-black"><center>Test coming very Soon!</center></h3>
+{#                  <center><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></center>#}
+                    <br>
+{#                  <p class="clearfix">#}
+{#                    <a href="#" class="float-left">Read more</a>#}
+{#                    <a href="#" class="float-right meta-chat"><span class="ion-chatbubble"></span> 8</a>#}
+{#                  </p>#}
+                </div>
+                    </a>
+              </div>
+            </div>
+
+              <div>
+              <div class="media d-block media-custom text-left">
+{#                <img src="{% static 'images/img_thumb_1.jpg' %}" alt="Image Placeholder" class="img-fluid">#}
+                <a href="{% url 'bloodprofile' %}" class="text-black">
+                  <div class="media-body" style="border: 1px solid gray">
+{#                  <span class="meta-post">December 2, 2017</span>#}
+                      <br>
+                  <h3 class="mt-0 text-black"><center>Test coming very Soon!</center></h3>
+{#                  <center><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></center>#}
+                    <br>
+{#                  <p class="clearfix">#}
+{#                    <a href="#" class="float-left">Read more</a>#}
+{#                    <a href="#" class="float-right meta-chat"><span class="ion-chatbubble"></span> 8</a>#}
+{#                  </p>#}
+                </div>
+                    </a>
+              </div>
+            </div>
+
+              <div>
+              <div class="media d-block media-custom text-left">
+{#                <img src="{% static 'images/img_thumb_1.jpg' %}" alt="Image Placeholder" class="img-fluid">#}
+                <a href="{% url 'bloodprofile' %}" class="text-black">
+                  <div class="media-body" style="border: 1px solid gray">
+{#                  <span class="meta-post">December 2, 2017</span>#}
+                      <br>
+                  <h3 class="mt-0 text-black"><center>Test coming very Soon!</center></h3>
+{#                  <center><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></center>#}
+                    <br>
+{#                  <p class="clearfix">#}
+{#                    <a href="#" class="float-left">Read more</a>#}
+{#                    <a href="#" class="float-right meta-chat"><span class="ion-chatbubble"></span> 8</a>#}
+{#                  </p>#}
+                </div>
+                    </a>
+              </div>
+            </div>
+          </div>
           </div>
           <!-- END slider -->
         </div>
@@ -140,9 +216,9 @@ We demystify medical jargons, helping patients to understand their medical histo
                   <h3 class="mt-0 text-black">Akul Gupta</h3>
 {#                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>#}
                   <p>
-                    <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-linkedin"></span></a>
+                    <a href="https://www.facebook.com/akul.gupta602" class="p-2"><span class="fa fa-facebook"></span></a>
+                    <a href="https://twitter.com/AkulGupta98" class="p-2"><span class="fa fa-twitter"></span></a>
+                    <a href="https://www.linkedin.com/in/akul-gupta-25401355/" class="p-2"><span class="fa fa-linkedin"></span></a>
                   </p>
                 </div>
               </div>
