@@ -11,6 +11,11 @@ class Diabetesreport(forms.ModelForm):
         model = diabreport
         fields = ['report']
 
+class Bloodreport(forms.ModelForm):
+    class Meta:
+        model = bloodreport
+        fields = ['report']
+
 class Diabetes(forms.ModelForm):
     class Meta:
         model = diabetes

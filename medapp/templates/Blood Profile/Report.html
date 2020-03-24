@@ -448,7 +448,7 @@ div.h4 {
                                 </div>
                                 <div class="col-md-8">
                                     <h5 class="personal-info-response">
-                                        {{name}}
+{#                                        {{name}}#}
                                     </h5>
                                 </div>
                             </div>
@@ -462,7 +462,7 @@ div.h4 {
                                 </div>
                                 <div class="col-md-8">
                                     <h5 class="personal-info-response">
-                                        {{age}}
+{#                                        {{age}}#}
                                     </h5>
                                 </div>
                             </div>
@@ -476,7 +476,7 @@ div.h4 {
                                 </div>
                                 <div class="col-md-8">
                                     <h5 class="personal-info-response">
-                                        {{gender}}
+{#                                        {{gender}}#}
                                     </h5>
                                 </div>
                             </div>
@@ -490,7 +490,7 @@ div.h4 {
                                 </div>
                                 <div class="col-md-8">
                                     <h5 class="personal-info-response">
-                                        {{height}}
+{#                                        {{height}}#}
                                     </h5>
                                 </div>
                             </div>
@@ -518,7 +518,7 @@ div.h4 {
                                 </div>
                                 <div class="col-md-8">
                                     <h5 class="personal-info-response">
-                                        {{weight}}
+{#                                        {{weight}}#}
                                     </h5>
                                 </div>
                             </div>
@@ -556,7 +556,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                16.3 g/dL
+                               {{ Hemoglobin }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -572,7 +572,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                5.47 mili/cu.mm
+                                {{ RBC }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -588,7 +588,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                5.3*10^3/µL
+                                {{ Leucocyte }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -604,7 +604,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                232*10^3/µL
+                                {{ Platelet}}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -626,7 +626,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                37.1%
+                                {{ PCV }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -642,7 +642,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                                {{ MCV }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -658,7 +658,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                                {{ MCH }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -674,7 +674,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                                {{ MCHC }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -690,7 +690,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                               {{ RDWSD }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -706,7 +706,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                                {{ RDWCV }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -729,7 +729,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                                {{ Neutrophils }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -745,7 +745,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                                {{ Lymphocytes }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -761,7 +761,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                               {{ Monocytes }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -770,21 +770,7 @@ div.h4 {
                             </h5>
                         </div>
                          <!----------13--------------------------->
-                         <div class="col-md-6">
-                            <h5 class="test-heading-response">
-                                Neutrophils
-                            </h5>
-                        </div>
-                        <div class="col-md-3">
-                            <h5 class="test-heading-response text-center">
-                                15.1
-                            </h5>
-                        </div>
-                        <div class="col-md-3">
-                            <h5 class="test-heading-response text-center">
-                                4 - 6
-                            </h5>
-                        </div>
+
                          <!----------16--------------------------->
                          <div class="col-md-6">
                             <h5 class="test-heading-response">
@@ -793,7 +779,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                                {{ Eosinophils }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -809,7 +795,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                                {{ Basophils }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -825,7 +811,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                                {{ MPV }}
                             </h5>
                         </div>
                         <div class="col-md-3">
@@ -857,7 +843,7 @@ div.h4 {
                         </div>
                         <div class="col-md-3">
                             <h5 class="test-heading-response text-center">
-                                15.1
+                                {{ Granulocyte }}
                             </h5>
                         </div>
                         <div class="col-md-3">

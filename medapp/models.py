@@ -53,3 +53,6 @@ class diabetes(models.Model):
 
 class diabreport(models.Model):
     report = models.FileField(upload_to='diabreport/%Y/%m/%d/', null=True)
+
+class bloodreport(models.Model):
+    report = models.FileField(upload_to='bloodreport/%Y/%m/%d/', null=True)
