@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('superuser@mediport.info/', admin.site.urls),
     path('', include('medapp.urls')),
 ]
 if settings.DEBUG:
