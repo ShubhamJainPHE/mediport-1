@@ -6,7 +6,7 @@ gender_choices = [
         (None,'Gender'),
         ('Male', 'Male'),
         ('Female', 'Female'),
-        ('Other', 'Other')
+        ('Other', 'Other'),
 ]
 
 choices = [
@@ -28,6 +28,17 @@ class contact(models.Model):
     lname = models.CharField(max_length=100, null=True, blank=True,default=None)
     email = models.EmailField(blank=True)
     message = models.CharField(max_length=2000, null=True, blank=True,default=None)
+
+class corona_model(models.Model):
+    email = models.EmailField(blank=True)
+    sex = models.CharField(max_length=100, null=True, blank=True,default=None)
+    age = models.CharField(max_length=100, null=True, blank=True, default=None)
+    smoking = models.CharField(max_length=100, null=True, blank=True, default=None)
+    travel = models.CharField(max_length=100, null=True, blank=True,default=None)
+    temp = models.CharField(max_length=100, null=True, blank=True,default=None)
+    any_comorbidity = models.CharField(max_length=100, null=True, blank=True,default=None)
+    curr_comorbidity = models.CharField(max_length=100, null=True, blank=True,default=None)
+
 
 class diabetes(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True, default=None)

@@ -1,0 +1,105 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <style>
+       </style>
+
+
+
+    <div id="fullcontent">
+    <section class="home-slider owl-carousel">
+
+    <div class="slider-item" style="background-image: url('{% static 'img/bakimg2.jpg' %}');">
+        <div class="container">
+          <div class="row slider-text align-items-center">
+            <div class="col-md-7 col-sm-12 element-animate">
+               <H2>Coronavirus COVID-19</H2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+        <br><br><br>
+
+             <div class="row justify-content-center element-animate">
+ <h3 class="text-uppercase border-bottom heading mb-12">COVID-19 Risk Assessment Result</h3>
+                 </div>
+
+             <br><br><br>
+
+
+            {% if risk_score >= '66.8' %}
+                <div  class="corona_result_high"  id="row justify-content-center corona_result_high" >
+        <center><img src="{% static 'img/icons8-high-risk-80.png' %}"/></center>
+            <center>HIGH RISK</center>
+            <center><P>Consult a doctor immediately!</P></center>
+        </div>
+                {% endif %}
+
+            {% if risk_score <= '56.78' %}
+ <div  class="corona_result_low"  id="row justify-content-center corona_result_low" >
+        <center><img src="{% static 'img/icons8-low-risk-80.png' %}"/></center>
+            <center>LOW RISK</center>
+            <center><P>Stay indoors and wash your hand properly!</P></center>
+        </div>
+            {% endif %}
+
+            {% if risk_score <= '66.78' and risk_score >= '56.78' %}
+            <div class="corona_result_medium"  id="row justify-content-center corona_result_medium">
+        <center><img src="{% static 'img/icons8-medium-risk-80.png' %}"/></center>
+            <center>MEDIUM RISK</center>
+            <center><P>Consult a doctor as soon as possible. Get yourself checked up!</P></center>
+        </div>
+            {% endif %}
+
+
+
+
+
+
+
+
+
+
+    <br><br><br>
+
+
+        <div class="corona_result_low" id="row justify-content-center corona_result_low" style="display: none">
+        <center><img src="{% static 'img/icons8-low-risk-80.png' %}"/></center>
+            <center>LOW RISK</center>
+            <center><P>Sit back and relax. Eat healthy and wash your hands properly!</P></center>
+        </div>
+
+    <br><br><br>
+
+
+</div>
+
+    <script>
+    var val = document.getElementById('demo').getAttribute('data-value');
+    console.log(val);
+    if (val >= 66.78){
+        document.getElementsByClassName('corona_result_high').style.display = 'block';
+        document.getElementsByClassName('corona_result_medium').style.display = 'none';
+        document.getElementsByClassName('corona_result_low').style.display = 'none';
+    }
+    else if(val<56.78){
+        document.getElementsByClassName('corona_result_low').style.display = 'block';
+        document.getElementsByClassName('corona_result_medium').style.display = 'none';
+        document.getElementsByClassName('corona_result_high').style.display = 'none';
+    }
+    else{
+        document.getElementsByClassName('corona_result_medium').style.display = 'block';
+         document.getElementsByClassName('corona_result_low').style.display = 'none';
+          document.getElementsByClassName('corona_result_high').style.display = 'none';
+    }
+    </script>
+{% endblock %}

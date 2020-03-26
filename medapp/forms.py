@@ -22,3 +22,9 @@ class Diabetes(forms.ModelForm):
         fields = ['name','gender', 'age','total_cholestrol','hdl_cholestrol', 'weight', 'height', 'waist', 'hip', 'physically_active',
                   'eat', 'bp', 'relative_diabetes','parent_diabetes', 'glucose', 'smoking', 'heart_disease', 'depression',
                   'HbA1c', 'haem']
+
+
+class Coronaform(forms.ModelForm):
+    class Meta:
+        model = corona_model
+        fields = ['email', 'sex', 'age','smoking','travel','temp','any_comorbidity','curr_comorbidity']

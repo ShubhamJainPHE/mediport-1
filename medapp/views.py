@@ -11,8 +11,8 @@ from tabula import read_pdf
 import pandas as pd
 import os
 import numpy as np
+from django.http import JsonResponse
 # Create your views here.
-
 
 def home(request):
     return render(request, 'home/home.html', {'':''})
@@ -21,9 +21,109 @@ def diabetes_report(request):
 
     return render(request, 'Diabetes/Report.html',)
 
+def coronavirus_result(request):
+
+    return render(request, 'Coronavirus/risk_result_covid19.html',{"Title":"Risk Score:COVID-19"})
+
+def coronavirus(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = Coronaform(request.POST)
+        # check whether xit's valid:
+        if form.is_valid():
+            email = request.POST.get('email')
+            sex = request.POST.get('sex')
+            age = request.POST.get('age')
+            smoking = request.POST.get('smoking')
+            travel = request.POST.get('travel')
+            temp= request.POST.get('temp')
+            any_comorbidity = request.POST.get('any_comorbidity')
+            curr_comorbidity = request.POST.get('curr_comorbidity')
+            context = corona_model.objects.create(
+                email=email,
+                sex=sex,
+                age=age,
+                smoking=smoking,
+                travel=travel,
+                temp=temp,
+                any_comorbidity=any_comorbidity,
+                curr_comorbidity=curr_comorbidity
+            )
+
+            lis = []
+            sex_value = [25.43, 0]
+            if sex == 'Male':
+                lis.append(sex_value[0])
+            else:
+                lis.append(sex_value[1])
+
+            age_value = [18.84, 0]
+            if age == '>50':
+                lis.append(age_value[0])
+            else:
+                lis.append(age_value[1])
+
+            smoking_value = [10.03, 0]
+            if smoking == 'Yes':
+                lis.append(smoking_value[0])
+            else:
+                lis.append(smoking_value[1])
+
+            travel_value = [0,30,40,0]
+            if travel == 'Contact with someone with dry cough fever or visible difficuly in breathing':
+                lis.append(travel_value[1])
+            elif travel == 'History of travel or meeting in affected geographical area on or after (T-14 days)':
+                lis.append(travel_value[2])
+            else:
+                lis.append(0)
+
+            temp_value = [0, 30, 40]
+            if temp == 'Fever(98.6-102)':
+                lis.append(temp_value[1])
+            elif temp == 'High Fever(>102)':
+                lis.append(temp_value[2])
+            else:
+                lis.append(0)
+
+            any_comorbidity_value = [26.78, 0]
+            if any_comorbidity == 'None':
+                lis.append(any_comorbidity_value[1])
+            elif any_comorbidity == 'High Fever(>102)':
+                lis.append(any_comorbidity_value[2])
+            else:
+                lis.append(0)
+
+            curr_comorbidity_value = [34.9, 46.26, 27.74, 18.61, 36.09, 29.86, 0]
+            if curr_comorbidity == 'None':
+                lis.append(curr_comorbidity_value[6])
+            elif curr_comorbidity == 'Kidney Disease':
+                lis.append(curr_comorbidity_value[0])
+            elif curr_comorbidity == 'Asthma or Lung Disease':
+                lis.append(curr_comorbidity_value[1])
+            elif curr_comorbidity == 'Cerebrovascular Disease':
+                lis.append(curr_comorbidity_value[2])
+            elif curr_comorbidity == 'Tumor':
+                lis.append(curr_comorbidity_value[3])
+            elif curr_comorbidity == 'Diabetes':
+                lis.append(curr_comorbidity_value[4])
+            else:
+                lis.append(curr_comorbidity_value[5])
+            value = str(sum(lis))
+            result = {"risk_score":value}
+            print(result)
+            return render(request, 'Coronavirus/risk_result_covid19.html', result)
+
+        # return JsonResponse(response_data)
+        return render(request, 'Coronavirus/risk_result_covid19.html')
+
+
+    return render(request, 'Coronavirus/coronavirus.html',)
+
 
 
 def bloodprofile(request):
+
     if request.method == 'POST':
         form = Bloodreport(request.POST, request.FILES)
         if form.is_valid():

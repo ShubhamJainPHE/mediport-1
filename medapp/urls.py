@@ -10,5 +10,7 @@ urlpatterns = [
     path('bloodprofile/', views.bloodprofile, name='bloodprofile'),
     path('diabetes_result/', views.diabetes_report, name='diabetes_report'),
     path('blood_result/', views.blood_report, name='blood_report'),
+    path('coronavirus/', views.coronavirus, name='coronavirus'),
+    path('coronavirus/covid19_risk_result/', views.coronavirus_result, name='coronavirus_result'),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
